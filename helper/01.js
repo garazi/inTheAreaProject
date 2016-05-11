@@ -3,6 +3,7 @@
         var searchTerm = component.get("v.defaultSearch");
         var location = component.get("v.location");
         var action = component.get("c.getLocal");
+        location = JSON.parse(location);
         action.setParams({
             "searchTerm": searchTerm,
             "lat": location.coords.latitude,
