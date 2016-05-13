@@ -1,0 +1,37 @@
+public class InTheArea {
+    @AuraEnabled
+    public static String getLocal (String searchTerm, Decimal lat, Decimal lon) {
+            String url = 'https://grewis-yelp.herokuapp.com/search?address=' + lat +','+ lon + '&term=' + EncodingUtil.urlEncode(searchTerm, 'UTF-8');
+            String resultList = getHttp(url);
+            return resultList;   
+    }
+    
+    private static String getHttp (String url) {
+        HttpRequest req = new HttpRequest();
+        Http http = new Http();
+        req.setMethod('GET');    
+        req.setEndpoint(url);
+        HTTPResponse res = http.send(req);
+        return res.getBody();
+    }
+    
+    @AuraEnabled
+    public static String getListByAddress(Id recordId, String searchQuery) {
+    try {
+            List<String> rList = new List<String>();
+            contactSelect(recordId, rList, searchQuery);
+            String url = 'https://grewis-yelp.herokuapp.com/search?address=' + EncodingUtil.urlEncode(rList[0], 'UTF-8') + '&term=' + EncodingUtil.urlEncode(rList[1], 'UTF-8');
+            String resultList = getHttp(url);
+        	return resultList;
+        }  catch(Exception ex){
+            return '{"error": "' + ex.getMessage() + '"}';
+        }
+    }
+    
+    private static void contactSelect (Id recordId, List<String>  rList, String searchQuery) {
+        Contact contact = [SELECT MailingStreet, MailingCity, MailingState FROM Contact WHERE Id=:recordId];
+        String location = contact.MailingStreet + ',' + contact.MailingCity + ',' + contact.MailingState;
+        rList.add(location);
+        rList.add(searchQuery);
+    }
+}
