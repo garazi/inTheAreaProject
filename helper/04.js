@@ -8,20 +8,12 @@
         }
         searchTerm = encodeURI(searchTerm);
         location = JSON.parse(location);
-        if(!recID) {
-           var action = component.get("c.getLocal"); 
-            action.setParams({
-                "searchTerm": searchTerm,
-                "lat": location.coords.latitude,
-                "lon": location.coords.longitude
-            });
-        } else {
-            var action = component.get("c.getListByAddress");
+        var action = component.get("c.getListByAddress");
             action.setParams({
                 "recordId": component.get("v.recordId"),
                 "searchQuery": searchTerm
             });
-        }
+
         action.setCallback(this, function(response) {
             this.doLayout(response, component);
         });
