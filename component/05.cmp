@@ -3,10 +3,7 @@
     <aura:attribute name="defaultSearch" type="String" default="Restaurants" />
     <aura:attribute name="location" type="Object" default='{"coords":{"latitude":37.7938462, "longitude":-122.3970253}}' />
     <aura:attribute name="restaurantList" type="Object" />
-<<<<<<< HEAD
     <aura:attribute name="openItem" type="String" />
-=======
->>>>>>> 93b4b561e1121253babf44ec4aebb6f4ce23a028
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
     <div class="slds">
         <div class="slds-box" aura:id="main">
@@ -39,11 +36,11 @@
                                         <div class="slds-media__body">
                                             <p>{!item.review}</p>
                                         </div>
-                                    </div>                       	
+                                    </div>                          
                                 </div>
                             </li>
                         </aura:iteration>
-                	</ul>
+                    </ul>
                 </div>
             </div>
         </div>
