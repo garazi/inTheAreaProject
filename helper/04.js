@@ -10,7 +10,7 @@
         location = JSON.parse(location);
         var action = component.get("c.getListByAddress");
             action.setParams({
-                "recordId": component.get("v.recordId"),
+                "recordId": recID,
                 "searchQuery": searchTerm
             });
 
