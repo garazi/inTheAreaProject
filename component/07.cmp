@@ -22,7 +22,7 @@
                             <li class="slds-list__item" onclick="{!c.showDetails}" data-record="{!i}">
                                 <h3 class="slds-text-heading--small slds-m-bottom--x-small">{!item.name}</h3>
                                 <img src="{!item.ratingImg}" alt="" class="ratingStars" />
-                                <div class="slds-hide" aura:id="item-details-{!i}">
+                                <div class="slds-hide" data-details="{!i}">
                                     <ul class="slds-list--vertical">
                                         <li class="slds-list__item">{!item.address}</li>
                                         <li class="slds-list__item">{!item.city}, {!item.state}</li>
