@@ -12,6 +12,7 @@
     height: 53rem;
 }
 .THIS.autoHeight {
+	min-height: 100vh;
 	height: auto;
 }
 .THIS.small .scroll-container {
