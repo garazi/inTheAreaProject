@@ -24,10 +24,12 @@
     },
     doLayout: function(response, component) {
         var data = JSON.parse(response.getReturnValue());
+        var warning = component.find('warning');
         if (data.error) {
-            component.set("v.errorMessage", data.error);
-            var warning = component.find('warning');
+            component.set("v.errorMessage", data.error);            
             $A.util.removeClass(warning, 'slds-hide');
+        } else {
+            $A.util.addClass(warning, 'slds-hide');
         }
         component.set("v.restaurantList", data.bizArray);
         var spinner = component.find('spinner');
