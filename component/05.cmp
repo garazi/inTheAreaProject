@@ -6,7 +6,7 @@
     <aura:attribute name="openItem" type="String" />
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
     <div class="slds">
-        <div class="slds-box" aura:id="main">
+        <div class="slds-box small" aura:id="main">
             <div aura:id="panelList">
                 <header>
                     <h2 class="slds-text-heading--small slds-m-bottom--small">In the Area</h2>
@@ -17,7 +17,7 @@
                         </div>
                     </div>
                 </header>
-                <div aura:id="scrollableArea">
+                <div class="slds-scrollable--y scroll-container"aura:id="scrollableArea">
                     <ul class="slds-list--vertical slds-has-dividers--top-space">
                         <aura:iteration items="{!v.restaurantList}" var="item" indexVar="i">
                             <li class="slds-list__item" onclick="{!c.showDetails}" data-record="{!i}">
